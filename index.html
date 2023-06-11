@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Docker - Viveven</title>
+
+		<meta name="description" content="A Docker Slide for Viveven">
+		<meta name="author" content="Berke Duzgun">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+			<!-- Giriş -->
+				<section>
+					<a href="https://revealjs.com">
+						<img src="./examples/assets/docker.png" alt="reveal.js logo" style="height: 180px; margin: 0 auto 4rem auto; background: transparent;" class="demo-logo">
+					</a>
+					<h3>Docker Sunumu</h3>
+					<p>
+						<small>Created by <a href="https://www.linkedin.com/in/berkeduzgun/">Berke Düzgün</a> </small>
+					</p>
+				</section>
+
+				<section>
+					<h2>Selamlar herkese</h2>
+					<p>
+						Docker sunumuna hoşgeldiniz
+					</p>
+				</section>
+
+			<!-- Tanım -->
+				<section>
+					<section>
+						<h2>Giriş</h2>
+						<p>Docker'ın Tanımı ve Amacı</p>
+						<br>
+						<a href="#/2/1" class="navigate-down">
+							<img class="r-frame" style="background: rgba(255,255,255,0.1);" width="178" height="238" data-src="https://static.slid.es/reveal/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section>
+						<h5>Docker, 2013 yılında başlatılan ve konteynerleştirme teknolojisini temel alan bir açık kaynak projesidir.</h5>
+						<p> Konteynerleştirme, uygulamaların, bağımlılıklarının ve yapılandırmalarının izole bir şekilde çalıştırılabilmesini sağlayan bir sanallaştırma yöntemidir. Docker, bu konteynerleştirme teknolojisini kullanarak yazılımları birbirinden bağımsız ve taşınabilir bir şekilde çalıştırmanızı sağlar.</p>
+					</section>
+					<section>
+						<h5>Docker'ın ana amacı, uygulamaların geliştirme, dağıtım ve çalıştırma süreçlerini kolaylaştırmaktır.</h5>
+						<p> Geleneksel olarak, bir uygulama bir sunucuda doğrudan çalıştırılırken, Docker konteynerleri, uygulama ve bağımlılıklarını birleştiren taşınabilir birimlerdir. Bu konteynerler, işletim sistemi seviyesinde izolasyon sağlayarak, uygulamaların farklı ortamlarda tutarlı bir şekilde çalışmasını sağlar.</p>
+					</section>
+				</section>
+
+			<!-- Tanım -->
+				<section>
+					<section>
+						<h2>Konteyner Teknolojisinin Önemi</h2>
+						<br>
+						<a href="#/2/1" class="navigate-down">
+							<img class="r-frame" style="background: rgba(255,255,255,0.1);" width="178" height="238" data-src="https://static.slid.es/reveal/arrow.png" alt="Down arrow">
+						</a>
+					</section>
+					<section>
+						<h5>Konteynerler, uygulamaların ve bağımlılıklarının herhangi bir ortamda tutarlı bir şekilde çalışmasını sağlar ve böylece geliştirme, test ve dağıtım süreçlerini hızlandırır.</h5>
+					</section>
+					<section>
+						<h5>Konteynerler ve sanal makineler arasındaki farklar: Konteynerler, daha hafif ve daha hız başlatılabilen izole ortamlar sağlarken, sanal makineler daha ağır ve daha fazla kaynak tüketir.</h5>
+					</section>
+				</section>
+
+			<!-- Tanım -->
+
+				<section>
+					<h2>Docker'ın popülaritesi ve kullanım alanları</h2>
+					<h5>Docker, özellikle mikro hizmetler ve DevOps uygulamalarında yaygın olarak kullanılır ve geliştiricilerin uygulamalarını daha hızlı ve güvenli bir şekilde dağıtmalarına olanak tanır.</h5>
+				</section>
+
+			<!-- Sorun -->
+				<section>
+					<section>
+						<h2>Peki sorunumuz nedir?</h2>
+						<br>
+						<a href="#/2/1" class="navigate-down">⬇️
+						</a>
+					</section>
+					<section>
+						<img style="height: 600px; width: 1200px; margin: 0 auto 4rem auto; background: transparent;"  data-src="./examples/assets/problem.jpg" alt="problem-1">
+					</section>
+					<section>
+						<h5>Konteynerler ve sanal makineler arasındaki farklar: Konteynerler, daha hafif ve daha hız başlatılabilen izole ortamlar sağlarken, sanal makineler daha ağır ve daha fazla kaynak tüketir.</h5>
+					</section>
+					
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
