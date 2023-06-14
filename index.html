@@ -267,7 +267,53 @@
 					
 				</section>		
 
-				
+				<section>
+					<section>
+						<h2>Docker Compose ve çoklu konteyner uygulamaları</h2> </section>
+					<section>
+						Docker Compose nedir ve ne işe yarar:  Docker Compose, birden fazla Docker Container'ı bir arada çalıştırmak ve yönetmek için kullanılan bir araçtır.
+					</section>
+					<section>
+						Docker-compose.yml dosyası, Docker Compose ile çalıştırılacak uygulamanın yapılandırmasını içerir ve her bir Docker Container'ın ayarlarını ve bağlantılarını tanımlar.
+					</section>
+					<section data-auto-animate>
+						<h2 data-id="code-title">Docker Compose File </h2>
+						<pre data-id="code-animation"><code class="hljs cli" data-trim data-line-numbers>
+						version: '3.8'
+
+						services:
+							web:
+									build: ./web
+									ports:
+									- "8000:8000"
+									depends_on:
+									- db
+									environment:
+									- DATABASE_URL=postgres://user:password@db:5432/mydatabase
+							
+							db:
+									image: "postgres:13"
+									environment:
+									- POSTGRES_USER=user
+									- POSTGRES_PASSWORD=password
+									- POSTGRES_DB=mydatabase
+							volumes:
+								    - db-data:/var/lib/postgresql/data
+							
+						volumes:
+						 	 db-data:
+	
+						</code></pre>
+					</section>
+				</section>
+				<section data-background-iframe="https://docs.docker.com/get-started/" data-background-interactive>
+					<div style="position: absolute; width: 40%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px; font-size: 20px; text-align: left;">
+						<h2>Docker Döküman</h2>
+					</div>
+				</section>
+				<section>
+					<h1>Teşekkürler 🎉</h1>
+				</section>
 			</div>
 		</div>
 
