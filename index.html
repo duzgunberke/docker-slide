@@ -77,6 +77,8 @@
 					<section>
 						<h5>Konteynerler ve sanal makineler arasındaki farklar: Konteynerler, daha hafif ve daha hız başlatılabilen izole ortamlar sağlarken, sanal makineler daha ağır ve daha fazla kaynak tüketir.</h5>
 					</section>
+					<section data-background="./examples/assets/dockervm.jpg" data-background-size="1200px">
+					</section>
 				</section>
 
 			<!-- Tanım -->
@@ -94,14 +96,178 @@
 						<a href="#/2/1" class="navigate-down">⬇️
 						</a>
 					</section>
-					<section>
-						<img style="height: 600px; width: 1200px; margin: 0 auto 4rem auto; background: transparent;"  data-src="./examples/assets/problem.jpg" alt="problem-1">
+					<section data-background="./examples/assets/problem.jpg" data-background-size="1200px">
+					</section>
+					<section data-background="./examples/assets/docker2.png" data-background-size="1200px">
 					</section>
 					<section>
-						<h5>Konteynerler ve sanal makineler arasındaki farklar: Konteynerler, daha hafif ve daha hız başlatılabilen izole ortamlar sağlarken, sanal makineler daha ağır ve daha fazla kaynak tüketir.</h5>
+						<h2>Ya da hikayemizdeki karakterleri değiştirelim</h2>
+					</section>
+					<section data-background="./examples/assets/docker3.png" data-background-size="1200px">
+					</section>
+					<section data-background="./examples/assets/docker4.png" data-background-size="1200px">
+					</section>
+				</section>
+
+				<!-- çözüm -->
+				<section>
+					<section>
+						<h2>Çözümü nedir?</h2>
+						<br>
+						<a href="#/2/1" class="navigate-down">⬇️
+						</a>
+					</section>
+				
+					<section data-background="./examples/assets/docker5.jpg" data-background-size="1200px">
 					</section>
 					
+					<section data-background="./examples/assets/docker6.jpg" data-background-size="1200px">
+					</section>
+					<section data-background="./examples/assets/docker7.png" data-background-size="1200px">
+					</section>
 				</section>
+
+
+				<section>
+					<section>
+						<h2>Daha yakından Docker'ın temel bileşenleri</h2>
+					</section>
+
+					<section>
+						<h2>Docker Engine</h2>
+						<ul>
+							<li>Docker'ın temel bileşeni olan Docker Engine, Docker API'si ve Docker Daemon'u içerir.</li>
+							<li>Docker Daemon, Docker API ile iletişim kurarak konteynerlerin yönetilmesini ve çalıştırılmasını sağlar</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Docker Engine</h2>
+						<img src="./examples/assets/docker8.png" alt="" />
+					</section>
+
+					<section>
+						<h2>Docker Image</h2>
+						<ul>
+							<li>Docker Image'lar, uygulamaların ve bağımlılıklarının paketlendiği ve dağıtıldığı okunabilir ve yazılabilir dosya sistemleridir.</li>
+							<li>Docker Image katmanları: Docker Image'lar, katmanlı bir yapıya sahiptir ve her katman, önceki katman üzerinde yapılan değişiklikleri temsil eder. Bu, Image boyutunu azaltır ve güncellemi hızlandırır</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Docker Image</h2>
+						<img src="./examples/assets/docker9.png" alt="" />
+					</section>
+
+					<section>
+						<h2>Docker Container</h2>
+						<ul>
+							<li>Docker Container'lar, Docker Image'lardan çalıştırılan ve uygulamaların çalıştığı izole edilmiş ortamlardır.</li>
+							<li>Docker Container'lar, çalışan, durdurulan ve duraklatılan gibi farklı durumlar alabilir.
+							</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Docker Hub ve Registry</h2>
+						<ul>
+							<li>Docker Hub, Docker Image'ların paylaşıldığı ve saklandığı merkezi bir depodur.</li>
+							<li>Docker Registry ise özel Docker Image'larınızı saklayabileceğiniz ve yönetebileceğiniz bir depodur.</li>
+						</ul>
+					</section>
+					<section data-background="./examples/assets/docker10.png" data-background-size="1200px">
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Docker kullanımı CLI</h2>
+						<ol>
+							<li>-version</li>
+							<li>-pull</li>
+							<li>-run</li>
+							<li>-start</li>
+							<li>-stop</li>
+							<li>-commit</li>
+							<li>-ps -[a] -[q]</li>
+							<li>-rm CONTAINER_ID -[f]</li>
+							<li>-images</li>
+							<li>-logs CONTAINER_ID</li>
+						</ol>
+					</section>
+				</section>
+
+				<section data-auto-animate>
+					<h2 data-id="code-title">Docker File ASP.NET Core</h2>
+					<pre data-id="code-animation"><code class="hljs cli" data-trim data-line-numbers>
+						FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build-env
+						WORKDIR /app
+						EXPOSE 8080
+
+						# Copy csproj and restore as distinct layers
+						COPY "MakeEvents.sln" "MakeEvents.sln"
+						COPY "API/API.csproj" "API/API.csproj"
+						COPY "Domain/Domain.csproj" "Domain/Domain.csproj"
+						COPY "Infrastructure/Infrastructure.csproj" "Infrastructure/Infrastructure.csproj"
+						COPY "Application/Application.csproj" "Application/Application.csproj"
+						COPY "Persistence/Persistence.csproj" "Persistence/Persistence.csproj"
+
+						RUN dotnet restore "MakeEvents.sln"
+
+						# Copy everything else and build
+						COPY . .
+						WORKDIR /app
+						RUN dotnet publish -c Release -o out
+
+						# Build runtime image
+						FROM mcr.microsoft.com/dotnet/aspnet:6.0
+						WORKDIR /app
+						COPY --from=build-env /app/out .
+						ENTRYPOINT ["dotnet", "API.dll"]
+
+					</code></pre>
+				</section>
+
+				<section data-auto-animate>
+					<h2 data-id="code-title">Docker File Flask</h2>
+					<pre data-id="code-animation"><code class="hljs cli" data-trim data-line-numbers>
+						# Temel alınacak image belirtin (bu örnekte Ubuntu 20.04)
+						FROM ubuntu:20.04
+
+						# İmajın yazarını belirtin
+						LABEL maintainer="yourname@example.com"
+
+						# Çalışma dizinini belirtin (uygulamanızın dosyalarını buraya kopyalayacaksınız)
+						WORKDIR /app
+
+						# Gerekli paketleri güncelleyin ve yükleyin
+						RUN apt-get update && \
+							apt-get upgrade -y && \
+							apt-get install -y python3 python3-pip
+
+						# Uygulamanızın gereksinimlerini yükleyin (requirements.txt dosyasını kullanarak)
+						COPY requirements.txt .
+						RUN pip3 install -r requirements.txt
+
+						# Uygulamanızın kaynak kodunu kopyalayın
+						COPY src/ /app
+
+						# Uygulamanın çalıştırılması için gerekli olan ortam değişkenlerini belirtin
+						ENV FLASK_APP=app.py
+						ENV FLASK_RUN_HOST=0.0.0.0
+
+						# Uygulamanın çalıştırılması için gerekli olan bağlantı noktasını belirtin
+						EXPOSE 5000
+
+						# Uygulamanın nasıl çalıştırılacağını belirtin
+						CMD ["flask", "run"]
+
+					</code></pre>
+				</section>
+
+				<section data-background-video="./examples/assets/demo.mp4" data-background-color="#000000">
+					
+				</section>		
+
+				
 			</div>
 		</div>
 
